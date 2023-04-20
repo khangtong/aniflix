@@ -37,7 +37,7 @@ const searchInput = document.querySelector('.nav__search-input');
 if (searchForm)
   searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    location.assign(`http://127.0.0.1:3000/search?s=${searchInput.value}`);
+    location.assign(`${location.origin}/search?s=${searchInput.value}`);
   });
 
 // Handle update user data

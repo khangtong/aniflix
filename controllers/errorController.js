@@ -72,7 +72,7 @@ const sendErrorProd = (err, req, res) => {
     } else {
       console.log('ERROR ⛔', err);
       res.status(err.statusCode).render('error', {
-        title: err.message,
+        title: 'Something went wrong!',
         statusCode: err.statusCode,
         errImg: '/img/app-img/st-wrong.png',
       });

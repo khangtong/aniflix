@@ -5450,7 +5450,7 @@ var login = /*#__PURE__*/function () {
           _context.next = 3;
           return (0, _axios.default)({
             method: 'POST',
-            url: 'http://127.0.0.1:3000/api/v1/users/login',
+            url: '/api/v1/users/login',
             data: {
               email: email,
               password: password
@@ -5491,7 +5491,7 @@ var signup = /*#__PURE__*/function () {
           _context2.next = 3;
           return (0, _axios.default)({
             method: 'POST',
-            url: 'http://127.0.0.1:3000/api/v1/users/signup',
+            url: '/api/v1/users/signup',
             data: {
               name: name,
               email: email,
@@ -5534,7 +5534,7 @@ var logout = /*#__PURE__*/function () {
           _context3.next = 3;
           return (0, _axios.default)({
             method: 'GET',
-            url: 'http://127.0.0.1:3000/api/v1/users/logout'
+            url: '/api/v1/users/logout'
           });
         case 3:
           res = _context3.sent;
@@ -5583,7 +5583,7 @@ var updateSettings = /*#__PURE__*/function () {
           _context.next = 4;
           return (0, _axios.default)({
             method: 'PATCH',
-            url: "http://127.0.0.1:3000/api/v1/users/".concat(endPoint),
+            url: "/api/v1/users/".concat(endPoint),
             data: data
           });
         case 4:
@@ -5635,7 +5635,7 @@ var handleFavorites = /*#__PURE__*/function () {
           _context.next = 3;
           return (0, _axios.default)({
             method: 'PATCH',
-            url: "http://127.0.0.1:3000/api/v1/films/".concat(id, "/").concat(action, "-favorites")
+            url: "/api/v1/films/".concat(id, "/").concat(action, "-favorites")
           });
         case 3:
           res = _context.sent;
@@ -5701,7 +5701,7 @@ var searchForm = document.querySelector('.nav__search');
 var searchInput = document.querySelector('.nav__search-input');
 if (searchForm) searchForm.addEventListener('submit', function (e) {
   e.preventDefault();
-  location.assign("http://127.0.0.1:3000/search?s=".concat(searchInput.value));
+  location.assign("".concat(location.origin, "/search?s=").concat(searchInput.value));
 });
 
 // Handle update user data
@@ -5879,7 +5879,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64618" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62835" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

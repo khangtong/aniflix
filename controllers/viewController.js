@@ -75,7 +75,6 @@ exports.getSearchedFilms = catchAsync(async (req, res, next) => {
   // 1. Get film data from collection
   const features = new APIFeatures(Film.find(), req.query).filter();
   let films = await features.query;
-  console.log(req.query);
 
   films = films.filter((el) =>
     req.query.s
