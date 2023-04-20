@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aniflix | Home</title>
+    <link
+      rel="stylesheet"
+      href="./img/font-awesome-6.3.0-pro-main/css/all.css"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="login-container">
+      <h2 class="form-header">Log In</h2>
+      <form action="" class="login-form">
+        <div class="form__group">
+          <label class="form__label" for="email">Email</label
+          ><input
+            class="form__input"
+            id="email"
+            type="email"
+            placeholder="you@example.com"
+            required="required"
+          />
+        </div>
+        <div class="form__group">
+          <label class="form__label" for="password">Password</label
+          ><input
+            class="form__input"
+            id="password"
+            type="password"
+            placeholder="••••••••"
+            required="required"
+            minlength="8"
+          />
+        </div>
+        <div class="form__group">
+          <button class="btn-submit">Enter</button>
+        </div>
+      </form>
+    </div>
+    <div class="signup-container">
+      <h2 class="form-header">Sign Up</h2>
+      <form action="" class="signup-form">
+        <div class="form__group">
+          <label class="form__label" for="name">Name</label
+          ><input
+            class="form__input"
+            id="name"
+            type="text"
+            required="required"
+          />
+        </div>
+        <div class="form__group">
+          <label class="form__label" for="email">Email</label
+          ><input
+            class="form__input"
+            id="email"
+            type="email"
+            placeholder="you@example.com"
+            required="required"
+          />
+        </div>
+        <div class="form__group">
+          <label class="form__label" for="password">Password</label
+          ><input
+            class="form__input"
+            id="password"
+            type="password"
+            placeholder="••••••••"
+            required="required"
+            minlength="8"
+          />
+        </div>
+        <div class="form__group">
+          <label class="form__label" for="passwordConfirm"
+            >Confirm Password</label
+          ><input
+            class="form__input"
+            id="passwordConfirm"
+            type="password"
+            placeholder="••••••••"
+            required="required"
+            minlength="8"
+          />
+        </div>
+        <div class="form__group">
+          <button class="btn-submit">Enter</button>
+        </div>
+      </form>
+    </div>
+    <div class="overlay"></div>
+    <header id="header">
+      <a href="/" class="logo">Aniflix</a>
+      <nav class="navbar navbar--app">
+        <div class="navbar--app__active-background"></div>
+        <a href="/home" class="navbar__item navbar__item--app"
+          ><i class="fa-solid fa-house icon--mr"></i>Home</a
+        >
+        <a href="/favorites" class="navbar__item navbar__item--app"
+          ><i class="fa-regular fa-star icon--mr"></i>Favorites</a
+        >
+      </nav>
+      <form class="nav__search">
+        <button class="nav__search-btn">
+          <svg>
+            <use xlink:href="./img/icons.svg#icon-search"></use>
+          </svg>
+        </button>
+        <input
+          class="nav__search-input"
+          type="text"
+          placeholder="Search film..."
+        />
+      </form>
+      <nav class="navbar navbar--user">
+        <!-- <div class="navbar__item navbar__item--user navbar__item--user--login">
+          <i class="fa-regular fa-person-to-portal icon--mr"></i>Log In
+        </div>
+        <div class="navbar__item navbar__item--user navbar__item--user--signup">
+          <i class="fa-regular fa-user-plus icon--mr"></i>Sign Up
+        </div> -->
+        <div
+          class="navbar__item navbar__item--user navbar__item--user__account"
+        >
+          <div class="user-action-container">
+            <a href="/me" class="user-action-item">
+              <i class="fa-solid fa-user"></i>
+              <span class="user-action-label">Profile</span>
+            </a>
+            <div class="user-action-item">
+              <i class="fa-solid fa-right-from-bracket"></i>
+              <span class="user-action-label">Log out</span>
+            </div>
+          </div>
+          <img
+            src="./img/users/default.jpg"
+            alt="User's avatar"
+            class="user-avatar"
+          />
+          <span class="user-name">Khang Tong</span>
+          <i class="fa-solid fa-caret-down"></i>
+        </div>
+      </nav>
+    </header>
+    <main id="main">
+      <div class="filter">
+        <div class="filter--category">
+          <h2 class="filter__heading">Category</h2>
+          <ul class="filter__list--category">
+            <li class="filter__item" data-active="false">
+              <i class="fa-light fa-swords icon--mr"></i>Action
+            </li>
+            <li class="filter__item" data-active="false">
+              <i class="fa-light fa-map icon--mr"></i>Adventure
+            </li>
+            <li class="filter__item" data-active="false">
+              <i class="fa-light fa-face-laugh-squint icon--mr"></i>Comedy
+            </li>
+            <li class="filter__item" data-active="false">
+              <i class="fa-light fa-family icon--mr"></i>Family
+            </li>
+            <li class="filter__item" data-active="false">
+              <i class="fa-light fa-user-bounty-hunter icon--mr"></i>Fiction
+            </li>
+            <li class="filter__item" data-active="false">
+              <i class="fa-light fa-heart icon--mr"></i>Love
+            </li>
+            <li class="filter__item" data-active="false">
+              <i class="fa-light fa-school icon--mr"></i>School
+            </li>
+            <li class="filter__item" data-active="false">
+              <i class="fa-light fa-ghost icon--mr"></i>Horror
+            </li>
+          </ul>
+        </div>
+        <div class="filter--country">
+          <h2 class="filter__heading">Country</h2>
+          <ul class="filter__list--country">
+            <li class="filter__item" data-active="false">
+              <i class="fa-light fa-castle icon--mr"></i>China
+            </li>
+            <li class="filter__item" data-active="false">
+              <i class="fa-light fa-mountain icon--mr"></i>Japan
+            </li>
+            <li class="filter__item" data-active="false">
+              <i class="fa-light fa-flag-usa icon--mr"></i>US-UK
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="film-list">
+        <div class="film-item">
+          <a href="#" class="film-item__link">
+            <img
+              src="https://img.hiephanhthienha.com/uploads/movies/endo-and-kobayashis-live-commentary-on-the-villainess-thumb.jpg"
+              alt="Film's thumbnail"
+              class="film-item__thumb"
+            />
+            <h3 class="film-item__name">Số phận của vị hôn thê</h3>
+          </a>
+          <span class="film-item__span genres">Comedy / Love</span>
+        </div>
+        <div class="film-item">
+          <a href="#" class="film-item__link">
+            <img
+              src="https://img.hiephanhthienha.com/uploads/movies/tom-and-jerry-the-magic-ring-thumb.jpg"
+              alt="Film's thumbnail"
+              class="film-item__thumb"
+            />
+            <h3 class="film-item__name">Tom and Jerry: The Magic Ring</h3>
+          </a>
+          <span class="film-item__span genres">Comedy / Family</span>
+        </div>
+        <div class="film-item">
+          <a href="#" class="film-item__link">
+            <img
+              src="https://img.hiephanhthienha.com/uploads/movies/kubo-khong-de-toi-vo-hinh-thumb.jpg"
+              alt="Film's thumbnail"
+              class="film-item__thumb"
+            />
+            <h3 class="film-item__name">Kubo Không Để Tôi Vô Hình</h3>
+          </a>
+          <span class="film-item__span genres">Love / School</span>
+        </div>
+        <div class="film-item">
+          <a href="#" class="film-item__link">
+            <img
+              src="https://img.hiephanhthienha.com/uploads/movies/ta-muon-tro-thanh-chua-te-bong-toi-thumb.jpg"
+              alt="Film's thumbnail"
+              class="film-item__thumb"
+            />
+            <h3 class="film-item__name">Ta Muốn Trở Thành Chúa Tể Bóng Tối</h3>
+          </a>
+          <span class="film-item__span genres">Action / Comedy</span>
+        </div>
+        <div class="film-item">
+          <a href="#" class="film-item__link">
+            <img
+              src="https://img.hiephanhthienha.com/uploads/movies/giant-beasts-of-ars-thumb.jpg"
+              alt="Film's thumbnail"
+              class="film-item__thumb"
+            />
+            <h3 class="film-item__name">Cự Thú Xứ Ars</h3>
+          </a>
+          <span class="film-item__span genres"
+            >Action / Adventure / Fiction</span
+          >
+        </div>
+        <div class="film-item">
+          <a href="#" class="film-item__link">
+            <img
+              src="https://img.hiephanhthienha.com/uploads/movies/the-magical-revolution-of-the-reincarnated-princess-and-the-genius-young-lady-thumb.jpg"
+              alt="Film's thumbnail"
+              class="film-item__thumb"
+            />
+            <h3 class="film-item__name">
+              Cuộc Cách Mạng Ma Thuật Của Công Chúa Chuyển Sinh Và Tiểu Thư
+            </h3>
+          </a>
+          <span class="film-item__span genres">Adventure / Fiction</span>
+        </div>
+      </div>
+    </main>
+    <footer id="footer">
+      <a
+        href="mailto:duykhangtong99@gmail.com"
+        class="footer__link"
+        style="
+          display: block;
+          width: fit-content;
+          margin-bottom: 2rem;
+          font-size: 1.6rem;
+        "
+        >Question? Contact us.</a
+      >
+      <ul class="footer__link-list">
+        <li class="footer__link-item">
+          <a href="#" class="footer__link">FAQ</a>
+        </li>
+        <li class="footer__link-item">
+          <a href="#" class="footer__link">Help Center</a>
+        </li>
+        <li class="footer__link-item">
+          <a href="#" class="footer__link">Account</a>
+        </li>
+        <li class="footer__link-item">
+          <a href="#" class="footer__link">Media Center</a>
+        </li>
+        <li class="footer__link-item">
+          <a href="#" class="footer__link">Investor Relations</a>
+        </li>
+        <li class="footer__link-item">
+          <a href="#" class="footer__link">Jobs</a>
+        </li>
+        <li class="footer__link-item">
+          <a href="#" class="footer__link">Ways to Watch</a>
+        </li>
+        <li class="footer__link-item">
+          <a href="#" class="footer__link">Terms of Use</a>
+        </li>
+        <li class="footer__link-item">
+          <a href="#" class="footer__link">Privacy</a>
+        </li>
+        <li class="footer__link-item">
+          <a href="#" class="footer__link">Cookie Preferences</a>
+        </li>
+        <li class="footer__link-item">
+          <a href="#" class="footer__link">Corporate Information</a>
+        </li>
+        <li class="footer__link-item">
+          <a href="#" class="footer__link">Speed Test</a>
+        </li>
+        <li class="footer__link-item">
+          <a href="#" class="footer__link">Legal Notices</a>
+        </li>
+        <li class="footer__link-item">
+          <a
+            href="http://ophim3.cc/api-document"
+            class="footer__link"
+            target="_blank"
+          >
+            API source</a
+          >
+        </li>
+      </ul>
+      <div class="footer__copyright">
+        &copy; Designed & Built by Khang Tong.
+      </div>
+    </footer>
+    <script src="./js/index.js"></script>
+  </body>
+</html>

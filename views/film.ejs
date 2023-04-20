@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aniflix</title>
+    <link
+      rel="stylesheet"
+      href="/img/font-awesome-6.3.0-pro-main/css/all.css"
+    />
+    <link rel="shortcut icon" href="/img/app-img/logo.png">
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body data-id="<%= film.id %>">
+    <%- include('_login'); %>
+    <%- include('_header', {user, navActive}); %>
+    <main id="main--film">
+      <section
+        class="section-hero"
+        style="background-image: url(<%= film.movie.poster_url %>)"
+      >
+        <div class="info-container">
+          <h1 class="name"><%= film.movie.name %></h1>
+          <div class="info-metadata">
+            <%= `${film.movie.year} | Anime | ${film.movie.country[0].name} |
+            ${film.movie.time}` %>
+          </div>
+          <%- film.movie.content.replace(/<p>/g, '<p class="description">'); %>
+          </div>
+        </section>
+        <div class="handle-favorites-container">
+          <% if (!isFavoriteByUser) { %>
+          <span class="handle-favorites__invite">Do you like it? If so, add it to favorites now!</span>
+          <button class="handle-favorites__btn handle-favorites__btn--add">
+            <i class="fa-solid fa-star"></i>
+            ADD
+          </button>
+          <% } else { %>
+          <span class="handle-favorites__invite">Do you want to remove it from your favorites?</span> 
+          <button class="handle-favorites__btn handle-favorites__btn--remove">
+            <i class="fa-solid fa-star"></i>
+            REMOVE
+          </button>
+          <% } %>
+      </div>
+      <section class="section-episodes">
+        <h1 class="section-title">
+          Episodes
+          <span style="color: var(--black-color-4); font-size: 2.4rem">
+            | <%= film.movie.name %></span
+          >
+        </h1>
+        <ul class="episodes-list">
+          <% film.episodes[0].server_data.reverse() %> <%
+          film.episodes[0].server_data.forEach(el => { %>
+          <li class="episodes-item">
+            <a
+              href="<%= el.link_embed %>"
+              class="episodes-item__link"
+              target="_blank"
+              ><%= el.name %></a
+            >
+          </li>
+          <% }); %>
+        </ul>
+      </section>
+      <section class="section-similar-film">
+        <h1 class="section-title">More Like This</h1>
+        <ul class="similar-film-list">
+          <% for (i = 0; i < 8; i++) { %>
+            <% if (!similarFilms[i] || !similarFilms[i].movie.poster_url) break; %>
+          <li class="similar-film-item" title="<%= similarFilms[i].movie.name %>">
+            <a href="<%= similarFilms[i].movie.slug %>" class="similar-film-link">
+              <img
+                src="<%= similarFilms[i].movie.poster_url %>"
+                alt="Similar film poster"
+                class="similar-film-img"
+              />
+            </a>
+          </li>
+          <% }; %>
+        </ul>
+      </section>
+    </main>
+    <%- include('_footer'); %>
+    <script src="/js/bundle.js"></script>
+  </body>
+</html>

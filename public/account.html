@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aniflix | Settings</title>
+    <link
+      rel="stylesheet"
+      href="./img/font-awesome-6.3.0-pro-main/css/all.css"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header id="header">
+      <a href="/" class="logo">Aniflix</a>
+      <nav class="navbar navbar--app">
+        <div class="navbar--app__active-background"></div>
+        <a href="#" class="navbar__item navbar__item--app"
+          ><i class="fa-solid fa-house icon--mr"></i>Home</a
+        >
+        <a href="#" class="navbar__item navbar__item--app"
+          ><i class="fa-regular fa-star icon--mr"></i>Favorites</a
+        >
+      </nav>
+      <form class="nav__search">
+        <button class="nav__search-btn">
+          <svg>
+            <use xlink:href="./img/icons.svg#icon-search"></use>
+          </svg>
+        </button>
+        <input
+          class="nav__search-input"
+          type="text"
+          placeholder="Search film..."
+        />
+      </form>
+      <nav class="navbar navbar--user">
+        <!-- <div class="navbar__item navbar__item--user navbar__item--user--login">
+          <i class="fa-regular fa-person-to-portal icon--mr"></i>Log In
+        </div>
+        <div class="navbar__item navbar__item--user navbar__item--user--signup">
+          <i class="fa-regular fa-user-plus icon--mr"></i>Sign Up
+        </div> -->
+        <div
+          class="navbar__item navbar__item--user navbar__item--user__account"
+        >
+          <div class="user-action-container">
+            <div class="user-action-item">
+              <i class="fa-solid fa-user"></i>
+              <span class="user-action-label">Profile</span>
+            </div>
+            <div class="user-action-item">
+              <i class="fa-solid fa-right-from-bracket"></i>
+              <span class="user-action-label">Log out</span>
+            </div>
+          </div>
+          <img
+            src="./img/users/default.jpg"
+            alt="User's avatar"
+            class="user-avatar"
+          />
+          <span class="user-name">Khang Tong</span>
+          <i class="fa-solid fa-caret-down"></i>
+        </div>
+      </nav>
+    </header>
+    <main id="main--settings">
+      <div class="user-settings">
+        <h1 class="user-setting-title">your account settings</h1>
+        <form action="" class="setting-form">
+          <div class="form__group">
+            <label
+              class="form__label"
+              for="name"
+              style="color: var(--white-color)"
+              >Name</label
+            ><input
+              class="form__input"
+              id="name"
+              type="text"
+              placeholder=""
+              required
+            />
+          </div>
+          <div class="form__group">
+            <label
+              class="form__label"
+              for="email"
+              style="color: var(--white-color)"
+              >Email</label
+            ><input
+              class="form__input"
+              id="email"
+              type="email"
+              placeholder=""
+              required
+            />
+          </div>
+          <div class="form__group form__group--photo-upload">
+            <img
+              src="./img/users/default.jpg"
+              alt="Your photo"
+              class="user-avatar"
+              style="width: 6rem; margin-right: 2rem"
+            />
+            <input
+              type="file"
+              id="photo"
+              name="photo"
+              accept="image/*"
+              class="form__upload"
+            />
+            <label for="photo">Choose new photo</label>
+          </div>
+          <div class="form__group">
+            <button class="btn-submit" style="text-transform: uppercase">
+              save settings
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="user-password-change">
+        <h1 class="user-setting-title">password change</h1>
+        <form action="" class="password-change-form">
+          <div class="form__group">
+            <label
+              class="form__label"
+              for="password-current"
+              style="color: var(--white-color)"
+              >Current password</label
+            ><input
+              class="form__input"
+              id="password-current"
+              type="password"
+              placeholder="••••••••"
+              required="required"
+              minlength="8"
+            />
+          </div>
+          <div class="form__group">
+            <label
+              class="form__label"
+              for="password"
+              style="color: var(--white-color)"
+              >New password</label
+            ><input
+              class="form__input"
+              id="password"
+              type="password"
+              placeholder="••••••••"
+              required="required"
+              minlength="8"
+            />
+          </div>
+          <div class="form__group">
+            <label
+              class="form__label"
+              for="password-confirm"
+              style="color: var(--white-color)"
+              >Confirm password</label
+            ><input
+              class="form__input"
+              id="password-confirm"
+              type="password"
+              placeholder="••••••••"
+              required="required"
+              minlength="8"
+            />
+          </div>
+          <div class="form__group">
+            <button class="btn-submit" style="text-transform: uppercase">
+              save password
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+    <footer id="footer">
+      <a
+        href="mailto:duykhangtong99@gmail.com"
+        class="footer__link"
+        style="
+          display: block;
+          width: fit-content;
+          margin-bottom: 2rem;
+          font-size: 1.6rem;
+        "
+        >Question? Contact us.</a
+      >
+      <ul class="footer__link-list">
+        <li class="footer__link-item">
+          <a href="#" class="footer__link">FAQ</a>
+        </li>
+        <li class="footer__link-item">
+          <a href="#" class="footer__link">Help Center</a>
+        </li>
+        <li class="footer__link-item">
+          <a href="#" class="footer__link">Account</a>
+        </li>
+        <li class="footer__link-item">
+          <a href="#" class="footer__link">Media Center</a>
+        </li>
+        <li class="footer__link-item">
+          <a href="#" class="footer__link">Investor Relations</a>
+        </li>
+        <li class="footer__link-item">
+          <a href="#" class="footer__link">Jobs</a>
+        </li>
+        <li class="footer__link-item">
+          <a href="#" class="footer__link">Ways to Watch</a>
+        </li>
+        <li class="footer__link-item">
+          <a href="#" class="footer__link">Terms of Use</a>
+        </li>
+        <li class="footer__link-item">
+          <a href="#" class="footer__link">Privacy</a>
+        </li>
+        <li class="footer__link-item">
+          <a href="#" class="footer__link">Cookie Preferences</a>
+        </li>
+        <li class="footer__link-item">
+          <a href="#" class="footer__link">Corporate Information</a>
+        </li>
+        <li class="footer__link-item">
+          <a href="#" class="footer__link">Speed Test</a>
+        </li>
+        <li class="footer__link-item">
+          <a href="#" class="footer__link">Legal Notices</a>
+        </li>
+        <li class="footer__link-item">
+          <a
+            href="http://ophim3.cc/api-document"
+            class="footer__link"
+            target="_blank"
+          >
+            API source</a
+          >
+        </li>
+      </ul>
+      <div class="footer__copyright">
+        &copy; Designed & Built by Khang Tong.
+      </div>
+    </footer>
+  </body>
+</html>

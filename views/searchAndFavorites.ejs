@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aniflix</title>
+    <link
+      rel="stylesheet"
+      href="/img/font-awesome-6.3.0-pro-main/css/all.css"
+    />
+    <link rel="shortcut icon" href="/img/app-img/logo.png">
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <%- include('_login'); %>
+    <%- include('_header', {user, navActive}); %>
+    <main id="main">
+      <div class="film-list">
+        <% films.forEach(el => { %>
+        <div class="film-item">
+          <a href="/film/<%= el.movie.slug %>" class="film-item__link">
+            <img
+              src="<%= el.movie.thumb_url %>"
+              alt="Film's thumbnail"
+              class="film-item__thumb"
+            />
+            <h3 class="film-item__name" title="<%= el.movie.name %>"><%= el.movie.name %></h3>
+          </a>
+        </div>
+        <% }); %>
+      </div>
+      <% if (results > 30) { %>
+      <div class="pagination">
+        <% if (+curPage > 1) {%>
+        <div class="pagination__prev">
+          <i class="fa-regular fa-angle-left"></i>
+          PREV
+        </div>
+        <% } %>
+        <% for (i = 1; i <= Math.ceil(results / 30); i++) { %>
+        <div class="pagination__current <%= curPage === i ? 'pagination__item--active' : '' %>"><%= i %></div>
+        <% } %>
+        <% if (+curPage < Math.ceil(results / 30)) {%>
+        <div class="pagination__next">
+          NEXT
+          <i class="fa-regular fa-angle-right"></i>
+        </div>
+        <% } %>
+      </div>
+      <% } %>
+    </main>
+    <%- include('_footer'); %>
+    <script src="/js/bundle.js"></script>
+  </body>
+</html>

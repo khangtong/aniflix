@@ -1,0 +1,48 @@
+<div class="filter">
+  <div class="filter--category">
+    <h2 class="filter__heading">Category</h2>
+    <ul class="filter__list--category">
+      <li class="filter__item <%= queryArr[0]?.includes('action') ? 'filter__item--active' : ''%>">
+        <i class="fa-light fa-swords icon--mr <%= queryArr[0]?.includes('action') ? 'fa-solid' : ''%>"></i>Action
+      </li>
+      <li class="filter__item <%= queryArr[0]?.includes('adventure') ? 'filter__item--active' : ''%>">
+        <i class="fa-light fa-map icon--mr <%= queryArr[0]?.includes('adventure') ? 'fa-solid' : ''%>"></i>Adventure
+      </li>
+      <li class="filter__item <%= queryArr[0]?.includes('comedy') ? 'filter__item--active' : ''%>">
+        <i class="fa-light fa-face-laugh-squint icon--mr <%= queryArr[0]?.includes('comedy') ? 'fa-solid' : ''%>"></i>Comedy
+      </li>
+      <li class="filter__item <%= queryArr[0]?.includes('family') ? 'filter__item--active' : ''%>">
+        <i class="fa-light fa-family icon--mr <%= queryArr[0]?.includes('family') ? 'fa-solid' : ''%>"></i>Family
+      </li>
+      <li class="filter__item <%= queryArr[0]?.includes('fiction') ? 'filter__item--active' : ''%>">
+        <i class="fa-light fa-user-bounty-hunter icon--mr <%= queryArr[0]?.includes('fiction') ? 'fa-solid' : ''%>"></i>Fiction
+      </li>
+      <li class="filter__item <%= queryArr[0]?.includes('love') ? 'filter__item--active' : ''%>">
+        <i class="fa-light fa-heart icon--mr <%= queryArr[0]?.includes('love') ? 'fa-solid' : ''%>"></i>Love
+      </li>
+      <li class="filter__item <%= queryArr[0]?.includes('school') ? 'filter__item--active' : ''%>">
+        <i class="fa-light fa-school icon--mr <%= queryArr[0]?.includes('school') ? 'fa-solid' : ''%>"></i>School
+      </li>
+      <li class="filter__item <%= queryArr[0]?.includes('horror') ? 'filter__item--active' : ''%>">
+        <i class="fa-light fa-ghost icon--mr <%= queryArr[0]?.includes('horror') ? 'fa-solid' : ''%>"></i>Horror
+      </li>
+    </ul>
+  </div>
+  <div class="filter--country">
+    <h2 class="filter__heading">Country</h2>
+    <ul class="filter__list--country">
+      <li class="filter__item <%= queryArr[1]?.includes('china') ? 'filter__item--active' : ''%>">
+        <i class="fa-light fa-castle icon--mr <%= queryArr[1]?.includes('china') ? 'fa-solid' : ''%>"></i>China
+      </li>
+      <li class="filter__item <%= queryArr[1]?.includes('japan') ? 'filter__item--active' : ''%>">
+        <i class="fa-light fa-mountain icon--mr <%= queryArr[1]?.includes('japan') ? 'fa-solid' : ''%>"></i>Japan
+      </li>
+      <li class="filter__item <%= queryArr[1]?.includes('us-uk') ? 'filter__item--active' : ''%>">
+        <i class="fa-light fa-flag-usa icon--mr <%= queryArr[1]?.includes('us-uk') ? 'fa-solid' : ''%>"></i>US-UK
+      </li>
+    </ul>
+  </div>
+  <button class="filter-btn">
+    <i class="fa-regular fa-filter" style="margin-right: 0.6rem"></i>filter
+  </button>
+</div>

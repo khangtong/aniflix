@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aniflix</title>
+    <link
+      rel="stylesheet"
+      href="./img/font-awesome-6.3.0-pro-main/css/all.css"
+    />
+    <link rel="shortcut icon" href="/img/app-img/logo.png">
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <%- include('_header', {user, navActive}); %>
+    <main id="main--settings">
+      <div class="user-settings">
+        <h1 class="user-setting-title">your account settings</h1>
+        <form class="setting-form">
+          <div class="form__group">
+            <label
+              class="form__label"
+              for="name"
+              style="color: var(--white-color)"
+              >Name</label
+            ><input
+              class="form__input"
+              id="name"
+              type="text"
+              placeholder=""
+              required
+              value="<%= user.name %>"
+            />
+          </div>
+          <div class="form__group">
+            <label
+              class="form__label"
+              for="email"
+              style="color: var(--white-color)"
+              >Email</label
+            ><input
+              class="form__input"
+              id="email"
+              type="email"
+              placeholder=""
+              required
+              value="<%= user.email %>"
+            />
+          </div>
+          <div class="form__group form__group--photo-upload">
+            <img
+              src="./img/users/<%= user.photo %>"
+              alt="Your photo"
+              class="user-avatar"
+              style="width: 6rem; margin-right: 2rem"
+            />
+            <input
+              type="file"
+              id="photo"
+              name="photo"
+              accept="image/*"
+              class="form__upload"
+            />
+            <label for="photo">Choose new photo</label>
+          </div>
+          <div class="form__group">
+            <button class="btn-submit" style="text-transform: uppercase">
+              save settings
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="user-password-change">
+        <h1 class="user-setting-title">password change</h1>
+        <form class="password-change-form">
+          <div class="form__group">
+            <label
+              class="form__label"
+              for="password-current"
+              style="color: var(--white-color)"
+              >Current password</label
+            ><input
+              class="form__input"
+              id="password-current"
+              type="password"
+              placeholder="••••••••"
+              required="required"
+              minlength="8"
+            />
+          </div>
+          <div class="form__group">
+            <label
+              class="form__label"
+              for="password"
+              style="color: var(--white-color)"
+              >New password</label
+            ><input
+              class="form__input"
+              id="password"
+              type="password"
+              placeholder="••••••••"
+              required="required"
+              minlength="8"
+            />
+          </div>
+          <div class="form__group">
+            <label
+              class="form__label"
+              for="password-confirm"
+              style="color: var(--white-color)"
+              >Confirm password</label
+            ><input
+              class="form__input"
+              id="password-confirm"
+              type="password"
+              placeholder="••••••••"
+              required="required"
+              minlength="8"
+            />
+          </div>
+          <div class="form__group">
+            <button class="btn-submit" style="text-transform: uppercase">
+              save password
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+    <%- include('_footer'); %>
+    <script src="/js/bundle.js"></script>
+  </body>
+</html>

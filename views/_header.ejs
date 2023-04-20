@@ -1,0 +1,49 @@
+<header id="header">
+  <a href="/" class="logo"><img src="/img/app-img/logo.png" alt=""></a>
+  <nav class="navbar navbar--app">
+    <a href="/" class="navbar__item navbar__item--app <%= navActive === 'home' ? 'navbar__item--app--active' : '' %>"
+      ><i class="fa-solid fa-house icon--mr"></i>Home</a
+    >
+    <a href="/favorites" class="navbar__item navbar__item--app <%= navActive === 'favorites' ? 'navbar__item--app--active' : '' %>"
+      ><i class="fa-solid fa-star icon--mr"></i>Favorites</a
+    >
+  </nav>
+  <form class="nav__search">
+    <button class="nav__search-btn" title="search"> 
+      <svg>
+        <use xlink:href="/img/icons.svg#icon-search"></use>
+      </svg>
+    </button>
+    <input class="nav__search-input" type="text" placeholder="Search film..." required />
+  </form>
+  <nav class="navbar navbar--user">
+    <% if (!user) { %>
+    <div class="navbar__item navbar__item--user navbar__item--user--login">
+        <i class="fa-regular fa-person-to-portal icon--mr"></i>Log In
+    </div>
+    <div class="navbar__item navbar__item--user navbar__item--user--signup">
+      <i class="fa-regular fa-user-plus icon--mr"></i>Sign Up
+    </div>
+    <% } else { %>
+    <div class="navbar__item navbar__item--user navbar__item--user__account">
+      <div class="user-action-container">
+        <a href="/me" class="user-action-item">
+          <i class="fa-solid fa-user"></i>
+          <span class="user-action-label">Profile</span>
+        </a>
+        <div class="user-action-item logout">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span class="user-action-label">Log out</span>
+        </div>
+      </div>
+      <img
+        src="/img/users/<%= user.photo %>"
+        alt="User's avatar"
+        class="user-avatar"
+      />
+      <span class="user-name"><%= user.name.substring(user.name.lastIndexOf(' ')) %></span>
+      <i class="fa-solid fa-caret-down"></i>
+    </div>
+    <% } %>
+  </nav>
+</header>
