@@ -5583,7 +5583,7 @@ var updateSettings = /*#__PURE__*/function () {
           _context.next = 4;
           return (0, _axios.default)({
             method: 'PATCH',
-            url: "http://127.0.0.1:3000/api/v1/users/".concat(endPoint),
+            url: "/api/v1/users/".concat(endPoint),
             data: data
           });
         case 4:
