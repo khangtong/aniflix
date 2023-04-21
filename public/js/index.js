@@ -98,154 +98,164 @@ if (overlay)
 // Handle navbar
 const navbarUser = document.querySelector('.navbar--user');
 
-navbarUser.addEventListener('click', (e) => {
-  const navbarUserItem = e.target.closest('.navbar__item--user');
-  if (navbarUserItem.classList.contains('navbar__item--user--login')) {
-    const loginContainer = document.querySelector('.login-container');
-    loginContainer.style = `top: calc(50% + ${window.visualViewport.pageTop}px);`;
-    loginContainer.classList.add('login-signup-container--active');
-    overlay.classList.add('overlay--active');
-    document.body.classList.add('stop-scrolling');
-  } else if (navbarUserItem.classList.contains('navbar__item--user--signup')) {
-    const signupContainer = document.querySelector('.signup-container');
-    signupContainer.style = `top: calc(50% + ${window.visualViewport.pageTop}px);`;
-    signupContainer.classList.add('login-signup-container--active');
-    overlay.classList.add('overlay--active');
-    document.body.classList.add('stop-scrolling');
-  } else {
-    if (
-      !document
-        .querySelector('.navbar__item--user__account')
-        .classList.contains('navbar__item--user__account--active')
+if (navbarUser) {
+  navbarUser.addEventListener('click', (e) => {
+    const navbarUserItem = e.target.closest('.navbar__item--user');
+    if (navbarUserItem.classList.contains('navbar__item--user--login')) {
+      const loginContainer = document.querySelector('.login-container');
+      loginContainer.style = `top: calc(50% + ${window.visualViewport.pageTop}px);`;
+      loginContainer.classList.add('login-signup-container--active');
+      overlay.classList.add('overlay--active');
+      document.body.classList.add('stop-scrolling');
+    } else if (
+      navbarUserItem.classList.contains('navbar__item--user--signup')
     ) {
-      document
-        .querySelector('.navbar__item--user__account')
-        .classList.add('navbar__item--user__account--active');
+      const signupContainer = document.querySelector('.signup-container');
+      signupContainer.style = `top: calc(50% + ${window.visualViewport.pageTop}px);`;
+      signupContainer.classList.add('login-signup-container--active');
+      overlay.classList.add('overlay--active');
+      document.body.classList.add('stop-scrolling');
     } else {
-      document
-        .querySelector('.navbar__item--user__account')
-        .classList.remove('navbar__item--user__account--active');
+      if (
+        !document
+          .querySelector('.navbar__item--user__account')
+          .classList.contains('navbar__item--user__account--active')
+      ) {
+        document
+          .querySelector('.navbar__item--user__account')
+          .classList.add('navbar__item--user__account--active');
+      } else {
+        document
+          .querySelector('.navbar__item--user__account')
+          .classList.remove('navbar__item--user__account--active');
+      }
     }
-  }
-});
+  });
 
-navbarUser.addEventListener('mouseover', (e) => {
-  const navbarUserItem =
-    e.target.closest('.navbar__item--user.navbar__item--user--login') ||
-    e.target.closest('.navbar__item--user.navbar__item--user--signup');
-  navbarUserItem?.children[0].classList.add('fa-solid');
-});
+  navbarUser.addEventListener('mouseover', (e) => {
+    const navbarUserItem =
+      e.target.closest('.navbar__item--user.navbar__item--user--login') ||
+      e.target.closest('.navbar__item--user.navbar__item--user--signup');
+    navbarUserItem?.children[0].classList.add('fa-solid');
+  });
 
-navbarUser.addEventListener('mouseout', (e) => {
-  const navbarUserItem =
-    e.target.closest('.navbar__item--user.navbar__item--user--login') ||
-    e.target.closest('.navbar__item--user.navbar__item--user--signup');
-  navbarUserItem?.children[0].classList.remove('fa-solid');
-});
+  navbarUser.addEventListener('mouseout', (e) => {
+    const navbarUserItem =
+      e.target.closest('.navbar__item--user.navbar__item--user--login') ||
+      e.target.closest('.navbar__item--user.navbar__item--user--signup');
+    navbarUserItem?.children[0].classList.remove('fa-solid');
+  });
+}
 
 // Handle filter
-const filterBtn = document.querySelector('.filter-btn');
+const filter = document.querySelector('.filter');
 
-filterBtn?.addEventListener('mouseover', () => {
-  filterBtn.children[0].classList.add('fa-solid');
-});
+if (filter) {
+  const filterBtn = document.querySelector('.filter-btn');
 
-filterBtn?.addEventListener('mouseout', () => {
-  filterBtn.children[0].classList.remove('fa-solid');
-});
+  filterBtn?.addEventListener('mouseover', () => {
+    filterBtn.children[0].classList.add('fa-solid');
+  });
 
-const filterListCategory = document.querySelector('.filter__list--category');
-const filterListCountry = document.querySelector('.filter__list--country');
+  filterBtn?.addEventListener('mouseout', () => {
+    filterBtn.children[0].classList.remove('fa-solid');
+  });
 
-const filterItemCategoryArr = [...filterListCategory?.children];
-const filterItemCountryArr = [...filterListCountry?.children];
+  const filterListCategory = document.querySelector('.filter__list--category');
+  const filterListCountry = document.querySelector('.filter__list--country');
 
-const handleFilterItemAndReturnActiveCount = (filterItem) => {
-  if (!filterItem.classList.contains('filter__item--active')) {
-    filterItem.classList.add('filter__item--active');
-    filterItem.children[0].classList.add('fa-solid');
-  } else {
-    filterItem.classList.remove('filter__item--active');
-    filterItem.children[0].classList.remove('fa-solid');
-  }
-};
+  const filterItemCategoryArr = [...filterListCategory?.children];
+  const filterItemCountryArr = [...filterListCountry?.children];
 
-const getTypeFilterCount = () => {
-  let typeFilterCount = 0;
-  if (
-    filterItemCategoryArr.some((el) =>
-      el.classList.contains('filter__item--active')
+  const handleFilterItemAndReturnActiveCount = (filterItem) => {
+    if (!filterItem.classList.contains('filter__item--active')) {
+      filterItem.classList.add('filter__item--active');
+      filterItem.children[0].classList.add('fa-solid');
+    } else {
+      filterItem.classList.remove('filter__item--active');
+      filterItem.children[0].classList.remove('fa-solid');
+    }
+  };
+
+  const getTypeFilterCount = () => {
+    let typeFilterCount = 0;
+    if (
+      filterItemCategoryArr.some((el) =>
+        el.classList.contains('filter__item--active')
+      )
     )
-  )
-    typeFilterCount++;
-  if (
-    filterItemCountryArr.some((el) =>
-      el.classList.contains('filter__item--active')
+      typeFilterCount++;
+    if (
+      filterItemCountryArr.some((el) =>
+        el.classList.contains('filter__item--active')
+      )
     )
-  )
-    typeFilterCount++;
+      typeFilterCount++;
 
-  return typeFilterCount;
-};
+    return typeFilterCount;
+  };
 
-filterListCategory.addEventListener('click', (e) => {
-  const filterItem = e.target.closest('.filter__item');
-  handleFilterItemAndReturnActiveCount(filterItem);
-});
+  filterListCategory.addEventListener('click', (e) => {
+    const filterItem = e.target.closest('.filter__item');
+    handleFilterItemAndReturnActiveCount(filterItem);
+  });
 
-filterListCountry.addEventListener('click', (e) => {
-  const filterItem = e.target.closest('.filter__item');
-  handleFilterItemAndReturnActiveCount(filterItem);
-});
+  filterListCountry.addEventListener('click', (e) => {
+    const filterItem = e.target.closest('.filter__item');
+    handleFilterItemAndReturnActiveCount(filterItem);
+  });
 
-filterBtn.addEventListener('click', () => {
-  let params = '';
-  const typeFilterCount = getTypeFilterCount();
-  if (typeFilterCount > 0) {
-    filterItemCategoryArr
-      .filter((el) => el.classList.contains('filter__item--active'))
-      .forEach((el, i) => {
-        if (i == 0) params += `?category=${el.innerText.toLowerCase()}`;
-        else params += `+${el.innerText.toLowerCase()}`;
-      });
-    filterItemCountryArr
-      .filter((el) => el.classList.contains('filter__item--active'))
-      .forEach((el, i) => {
-        if (i == 0)
-          params += `${
-            typeFilterCount === 1 ? '?' : '&'
-          }country=${el.innerText.toLowerCase()}`;
-        else params += `+${el.innerText.toLowerCase()}`;
-      });
-    window.location.assign(params);
-  } else window.location.assign('/');
-});
+  filterBtn.addEventListener('click', () => {
+    let params = '';
+    const typeFilterCount = getTypeFilterCount();
+    if (typeFilterCount > 0) {
+      filterItemCategoryArr
+        .filter((el) => el.classList.contains('filter__item--active'))
+        .forEach((el, i) => {
+          if (i == 0) params += `?category=${el.innerText.toLowerCase()}`;
+          else params += `+${el.innerText.toLowerCase()}`;
+        });
+      filterItemCountryArr
+        .filter((el) => el.classList.contains('filter__item--active'))
+        .forEach((el, i) => {
+          if (i == 0)
+            params += `${
+              typeFilterCount === 1 ? '?' : '&'
+            }country=${el.innerText.toLowerCase()}`;
+          else params += `+${el.innerText.toLowerCase()}`;
+        });
+      window.location.assign(params);
+    } else window.location.assign('/');
+  });
+}
 
 // Handle pagination
 const pagination = document.querySelector('.pagination');
 
-pagination.addEventListener('click', (e) => {
-  const paginationItem = e.target.closest('div');
-  let url = new URL(window.location.href);
+if (pagination) {
+  pagination.addEventListener('click', (e) => {
+    const paginationItem = e.target.closest('div');
+    let url = new URL(window.location.href);
 
-  if (paginationItem.classList.contains('pagination__current')) {
-    url.searchParams.set('page', paginationItem.innerText);
-    window.location.assign(url.toString());
-  } else if (paginationItem.classList.contains('pagination__prev')) {
-    url.searchParams.set(
-      'page',
-      (window.location.search?.includes('page')
-        ? +window.location.search.slice(-1)
-        : 1) - 1
-    );
-    window.location.assign(url.toString());
-  } else {
-    url.searchParams.set(
-      'page',
-      (window.location.search?.includes('page')
-        ? +window.location.search.slice(-1)
-        : 1) + 1
-    );
-    window.location.assign(url.toString());
-  }
-});
+    if (paginationItem.classList.contains('pagination__current')) {
+      url.searchParams.set('page', paginationItem.innerText);
+      window.location.assign(url.toString());
+    } else if (paginationItem.classList.contains('pagination__prev')) {
+      url.searchParams.set(
+        'page',
+        (window.location.search?.includes('page')
+          ? +window.location.search.slice(-1)
+          : 1) - 1
+      );
+      window.location.assign(url.toString());
+    } else {
+      url.searchParams.set(
+        'page',
+        (window.location.search?.includes('page')
+          ? +window.location.search.slice(-1)
+          : 1) + 1
+      );
+      window.location.assign(url.toString());
+    }
+  });
+}

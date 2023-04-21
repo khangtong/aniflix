@@ -5748,112 +5748,119 @@ if (overlay) overlay.addEventListener('click', function () {
 
 // Handle navbar
 var navbarUser = document.querySelector('.navbar--user');
-navbarUser.addEventListener('click', function (e) {
-  var navbarUserItem = e.target.closest('.navbar__item--user');
-  if (navbarUserItem.classList.contains('navbar__item--user--login')) {
-    var loginContainer = document.querySelector('.login-container');
-    loginContainer.style = "top: calc(50% + ".concat(window.visualViewport.pageTop, "px);");
-    loginContainer.classList.add('login-signup-container--active');
-    overlay.classList.add('overlay--active');
-    document.body.classList.add('stop-scrolling');
-  } else if (navbarUserItem.classList.contains('navbar__item--user--signup')) {
-    var signupContainer = document.querySelector('.signup-container');
-    signupContainer.style = "top: calc(50% + ".concat(window.visualViewport.pageTop, "px);");
-    signupContainer.classList.add('login-signup-container--active');
-    overlay.classList.add('overlay--active');
-    document.body.classList.add('stop-scrolling');
-  } else {
-    if (!document.querySelector('.navbar__item--user__account').classList.contains('navbar__item--user__account--active')) {
-      document.querySelector('.navbar__item--user__account').classList.add('navbar__item--user__account--active');
+if (navbarUser) {
+  navbarUser.addEventListener('click', function (e) {
+    var navbarUserItem = e.target.closest('.navbar__item--user');
+    if (navbarUserItem.classList.contains('navbar__item--user--login')) {
+      var loginContainer = document.querySelector('.login-container');
+      loginContainer.style = "top: calc(50% + ".concat(window.visualViewport.pageTop, "px);");
+      loginContainer.classList.add('login-signup-container--active');
+      overlay.classList.add('overlay--active');
+      document.body.classList.add('stop-scrolling');
+    } else if (navbarUserItem.classList.contains('navbar__item--user--signup')) {
+      var signupContainer = document.querySelector('.signup-container');
+      signupContainer.style = "top: calc(50% + ".concat(window.visualViewport.pageTop, "px);");
+      signupContainer.classList.add('login-signup-container--active');
+      overlay.classList.add('overlay--active');
+      document.body.classList.add('stop-scrolling');
     } else {
-      document.querySelector('.navbar__item--user__account').classList.remove('navbar__item--user__account--active');
+      if (!document.querySelector('.navbar__item--user__account').classList.contains('navbar__item--user__account--active')) {
+        document.querySelector('.navbar__item--user__account').classList.add('navbar__item--user__account--active');
+      } else {
+        document.querySelector('.navbar__item--user__account').classList.remove('navbar__item--user__account--active');
+      }
     }
-  }
-});
-navbarUser.addEventListener('mouseover', function (e) {
-  var navbarUserItem = e.target.closest('.navbar__item--user.navbar__item--user--login') || e.target.closest('.navbar__item--user.navbar__item--user--signup');
-  navbarUserItem === null || navbarUserItem === void 0 ? void 0 : navbarUserItem.children[0].classList.add('fa-solid');
-});
-navbarUser.addEventListener('mouseout', function (e) {
-  var navbarUserItem = e.target.closest('.navbar__item--user.navbar__item--user--login') || e.target.closest('.navbar__item--user.navbar__item--user--signup');
-  navbarUserItem === null || navbarUserItem === void 0 ? void 0 : navbarUserItem.children[0].classList.remove('fa-solid');
-});
+  });
+  navbarUser.addEventListener('mouseover', function (e) {
+    var navbarUserItem = e.target.closest('.navbar__item--user.navbar__item--user--login') || e.target.closest('.navbar__item--user.navbar__item--user--signup');
+    navbarUserItem === null || navbarUserItem === void 0 ? void 0 : navbarUserItem.children[0].classList.add('fa-solid');
+  });
+  navbarUser.addEventListener('mouseout', function (e) {
+    var navbarUserItem = e.target.closest('.navbar__item--user.navbar__item--user--login') || e.target.closest('.navbar__item--user.navbar__item--user--signup');
+    navbarUserItem === null || navbarUserItem === void 0 ? void 0 : navbarUserItem.children[0].classList.remove('fa-solid');
+  });
+}
 
 // Handle filter
-var filterBtn = document.querySelector('.filter-btn');
-filterBtn === null || filterBtn === void 0 ? void 0 : filterBtn.addEventListener('mouseover', function () {
-  filterBtn.children[0].classList.add('fa-solid');
-});
-filterBtn === null || filterBtn === void 0 ? void 0 : filterBtn.addEventListener('mouseout', function () {
-  filterBtn.children[0].classList.remove('fa-solid');
-});
-var filterListCategory = document.querySelector('.filter__list--category');
-var filterListCountry = document.querySelector('.filter__list--country');
-var filterItemCategoryArr = _toConsumableArray(filterListCategory === null || filterListCategory === void 0 ? void 0 : filterListCategory.children);
-var filterItemCountryArr = _toConsumableArray(filterListCountry === null || filterListCountry === void 0 ? void 0 : filterListCountry.children);
-var handleFilterItemAndReturnActiveCount = function handleFilterItemAndReturnActiveCount(filterItem) {
-  if (!filterItem.classList.contains('filter__item--active')) {
-    filterItem.classList.add('filter__item--active');
-    filterItem.children[0].classList.add('fa-solid');
-  } else {
-    filterItem.classList.remove('filter__item--active');
-    filterItem.children[0].classList.remove('fa-solid');
-  }
-};
-var getTypeFilterCount = function getTypeFilterCount() {
-  var typeFilterCount = 0;
-  if (filterItemCategoryArr.some(function (el) {
-    return el.classList.contains('filter__item--active');
-  })) typeFilterCount++;
-  if (filterItemCountryArr.some(function (el) {
-    return el.classList.contains('filter__item--active');
-  })) typeFilterCount++;
-  return typeFilterCount;
-};
-filterListCategory.addEventListener('click', function (e) {
-  var filterItem = e.target.closest('.filter__item');
-  handleFilterItemAndReturnActiveCount(filterItem);
-});
-filterListCountry.addEventListener('click', function (e) {
-  var filterItem = e.target.closest('.filter__item');
-  handleFilterItemAndReturnActiveCount(filterItem);
-});
-filterBtn.addEventListener('click', function () {
-  var params = '';
-  var typeFilterCount = getTypeFilterCount();
-  if (typeFilterCount > 0) {
-    filterItemCategoryArr.filter(function (el) {
+var filter = document.querySelector('.filter');
+if (filter) {
+  var filterBtn = document.querySelector('.filter-btn');
+  filterBtn === null || filterBtn === void 0 ? void 0 : filterBtn.addEventListener('mouseover', function () {
+    filterBtn.children[0].classList.add('fa-solid');
+  });
+  filterBtn === null || filterBtn === void 0 ? void 0 : filterBtn.addEventListener('mouseout', function () {
+    filterBtn.children[0].classList.remove('fa-solid');
+  });
+  var filterListCategory = document.querySelector('.filter__list--category');
+  var filterListCountry = document.querySelector('.filter__list--country');
+  var filterItemCategoryArr = _toConsumableArray(filterListCategory === null || filterListCategory === void 0 ? void 0 : filterListCategory.children);
+  var filterItemCountryArr = _toConsumableArray(filterListCountry === null || filterListCountry === void 0 ? void 0 : filterListCountry.children);
+  var handleFilterItemAndReturnActiveCount = function handleFilterItemAndReturnActiveCount(filterItem) {
+    if (!filterItem.classList.contains('filter__item--active')) {
+      filterItem.classList.add('filter__item--active');
+      filterItem.children[0].classList.add('fa-solid');
+    } else {
+      filterItem.classList.remove('filter__item--active');
+      filterItem.children[0].classList.remove('fa-solid');
+    }
+  };
+  var getTypeFilterCount = function getTypeFilterCount() {
+    var typeFilterCount = 0;
+    if (filterItemCategoryArr.some(function (el) {
       return el.classList.contains('filter__item--active');
-    }).forEach(function (el, i) {
-      if (i == 0) params += "?category=".concat(el.innerText.toLowerCase());else params += "+".concat(el.innerText.toLowerCase());
-    });
-    filterItemCountryArr.filter(function (el) {
+    })) typeFilterCount++;
+    if (filterItemCountryArr.some(function (el) {
       return el.classList.contains('filter__item--active');
-    }).forEach(function (el, i) {
-      if (i == 0) params += "".concat(typeFilterCount === 1 ? '?' : '&', "country=").concat(el.innerText.toLowerCase());else params += "+".concat(el.innerText.toLowerCase());
-    });
-    window.location.assign(params);
-  } else window.location.assign('/');
-});
+    })) typeFilterCount++;
+    return typeFilterCount;
+  };
+  filterListCategory.addEventListener('click', function (e) {
+    var filterItem = e.target.closest('.filter__item');
+    handleFilterItemAndReturnActiveCount(filterItem);
+  });
+  filterListCountry.addEventListener('click', function (e) {
+    var filterItem = e.target.closest('.filter__item');
+    handleFilterItemAndReturnActiveCount(filterItem);
+  });
+  filterBtn.addEventListener('click', function () {
+    var params = '';
+    var typeFilterCount = getTypeFilterCount();
+    if (typeFilterCount > 0) {
+      filterItemCategoryArr.filter(function (el) {
+        return el.classList.contains('filter__item--active');
+      }).forEach(function (el, i) {
+        if (i == 0) params += "?category=".concat(el.innerText.toLowerCase());else params += "+".concat(el.innerText.toLowerCase());
+      });
+      filterItemCountryArr.filter(function (el) {
+        return el.classList.contains('filter__item--active');
+      }).forEach(function (el, i) {
+        if (i == 0) params += "".concat(typeFilterCount === 1 ? '?' : '&', "country=").concat(el.innerText.toLowerCase());else params += "+".concat(el.innerText.toLowerCase());
+      });
+      window.location.assign(params);
+    } else window.location.assign('/');
+  });
+}
 
 // Handle pagination
 var pagination = document.querySelector('.pagination');
-pagination.addEventListener('click', function (e) {
-  var paginationItem = e.target.closest('div');
-  var url = new URL(window.location.href);
-  if (paginationItem.classList.contains('pagination__current')) {
-    url.searchParams.set('page', paginationItem.innerText);
-    window.location.assign(url.toString());
-  } else if (paginationItem.classList.contains('pagination__prev')) {
-    var _window$location$sear;
-    url.searchParams.set('page', ((_window$location$sear = window.location.search) !== null && _window$location$sear !== void 0 && _window$location$sear.includes('page') ? +window.location.search.slice(-1) : 1) - 1);
-    window.location.assign(url.toString());
-  } else {
-    var _window$location$sear2;
-    url.searchParams.set('page', ((_window$location$sear2 = window.location.search) !== null && _window$location$sear2 !== void 0 && _window$location$sear2.includes('page') ? +window.location.search.slice(-1) : 1) + 1);
-    window.location.assign(url.toString());
-  }
-});
+if (pagination) {
+  pagination.addEventListener('click', function (e) {
+    var paginationItem = e.target.closest('div');
+    var url = new URL(window.location.href);
+    if (paginationItem.classList.contains('pagination__current')) {
+      url.searchParams.set('page', paginationItem.innerText);
+      window.location.assign(url.toString());
+    } else if (paginationItem.classList.contains('pagination__prev')) {
+      var _window$location$sear;
+      url.searchParams.set('page', ((_window$location$sear = window.location.search) !== null && _window$location$sear !== void 0 && _window$location$sear.includes('page') ? +window.location.search.slice(-1) : 1) - 1);
+      window.location.assign(url.toString());
+    } else {
+      var _window$location$sear2;
+      url.searchParams.set('page', ((_window$location$sear2 = window.location.search) !== null && _window$location$sear2 !== void 0 && _window$location$sear2.includes('page') ? +window.location.search.slice(-1) : 1) + 1);
+      window.location.assign(url.toString());
+    }
+  });
+}
 },{"./login.js":"login.js","./updateSettings.js":"updateSettings.js","./handleFavorites":"handleFavorites.js"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -5879,7 +5886,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62835" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57212" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
