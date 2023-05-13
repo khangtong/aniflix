@@ -37,8 +37,7 @@
         </div>
       </div>
       <img
-        src="/img/users/<%= user.photo %>"
-        alt="User's avatar"
+        src="<%= `data:image/jpeg;base64,${user.photo.toString('base64')}` %>"
         class="user-avatar"
       />
       <span class="user-name"><%= user.name.substring(user.name.lastIndexOf(' ')) %></span>

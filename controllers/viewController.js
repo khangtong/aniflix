@@ -102,7 +102,7 @@ exports.getSearchedFilms = catchAsync(async (req, res, next) => {
     results: films.length,
     curPage: !req.query?.page ? 1 : req.query?.page,
     films,
-    navActive: 'home',
+    navActive: null,
   });
 });
 

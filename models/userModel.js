@@ -25,7 +25,7 @@ const userSchema = mongoose.Schema({
     default: 'user',
   },
   photo: {
-    type: String,
+    type: Buffer,
     default: 'default.jpg',
   },
   password: {

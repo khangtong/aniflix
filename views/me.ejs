@@ -50,8 +50,7 @@
           </div>
           <div class="form__group form__group--photo-upload">
             <img
-              src="./img/users/<%= user.photo %>"
-              alt="Your photo"
+              src="<%= `data:image/jpeg;base64,${user.photo.toString('base64')}` %>"
               class="user-avatar"
               style="width: 6rem; margin-right: 2rem"
             />
