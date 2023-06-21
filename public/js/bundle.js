@@ -5674,34 +5674,53 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+// Handle overlay
+var overlay = document.querySelector('.overlay');
+if (overlay) overlay.addEventListener('click', function () {
+  document.querySelector('.login-container').classList.remove('login-signup-container--active');
+  document.querySelector('.signup-container').classList.remove('login-signup-container--active');
+  overlay.classList.remove('overlay--active');
+  document.body.classList.remove('stop-scrolling');
+});
+
 // Handle log in, sign up
 var loginForm = document.querySelector('.login-form');
 var signupForm = document.querySelector('.signup-form');
 var logoutBtn = document.querySelector('.logout');
-if (loginForm) loginForm.addEventListener('submit', function (e) {
-  e.preventDefault();
-  var email = document.querySelector('#email--login').value;
-  var password = document.querySelector('#password--login').value;
-  (0, _login.login)(email, password);
-});
-if (signupForm) signupForm.addEventListener('submit', function (e) {
-  e.preventDefault();
-  var name = document.querySelector('#name').value;
-  var email = document.querySelector('#email--signup').value;
-  var password = document.querySelector('#password--signup').value;
-  var passwordConfirm = document.querySelector('#passwordConfirm').value;
-  (0, _login.signup)(name, email, password, passwordConfirm);
-});
+var closeFormBtn = document.querySelectorAll('.close-form-btn');
+if (closeFormBtn) {
+  if (loginForm) loginForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = document.querySelector('#email--login').value;
+    var password = document.querySelector('#password--login').value;
+    (0, _login.login)(email, password);
+  });
+  if (signupForm) signupForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = document.querySelector('#name').value;
+    var email = document.querySelector('#email--signup').value;
+    var password = document.querySelector('#password--signup').value;
+    var passwordConfirm = document.querySelector('#passwordConfirm').value;
+    (0, _login.signup)(name, email, password, passwordConfirm);
+  });
+  closeFormBtn.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelector('.login-container').classList.remove('login-signup-container--active');
+      document.querySelector('.signup-container').classList.remove('login-signup-container--active');
+      overlay.classList.remove('overlay--active');
+      document.body.classList.remove('stop-scrolling');
+    });
+  });
+}
 if (logoutBtn) logoutBtn.addEventListener('click', function () {
   (0, _login.logout)();
 });
 
 // Handle search
-var searchForm = document.querySelector('.nav__search');
-var searchInput = document.querySelector('.nav__search-input');
-if (searchForm) searchForm.addEventListener('submit', function (e) {
-  e.preventDefault();
-  location.assign("".concat(location.origin, "/search?s=").concat(searchInput.value));
+var searchForm = document.querySelector('.search-group');
+var searchInput = document.querySelector('.search-input');
+if (searchForm) searchInput.addEventListener('keyup', function (e) {
+  if (e.keyCode === 13) location.assign("".concat(location.origin, "/search?s=").concat(searchInput.value));
 });
 
 // Handle update user data
@@ -5728,23 +5747,31 @@ if (passwordForm) passwordForm.addEventListener('submit', function (e) {
 });
 
 // Handle add to favorites
+var favInvite = document.querySelector('.handle-favorites__invite');
 var addFavBtn = document.querySelector('.handle-favorites__btn--add');
 var removeFavBtn = document.querySelector('.handle-favorites__btn--remove');
-if (addFavBtn) addFavBtn.addEventListener('click', function () {
-  (0, _handleFavorites.handleFavorites)(document.body.dataset.id, 'add');
-});
-if (removeFavBtn) removeFavBtn.addEventListener('click', function () {
-  (0, _handleFavorites.handleFavorites)(document.body.dataset.id, 'remove');
-});
-
-// Handle overlay
-var overlay = document.querySelector('.overlay');
-if (overlay) overlay.addEventListener('click', function () {
-  document.querySelector('.login-container').classList.remove('login-signup-container--active');
-  document.querySelector('.signup-container').classList.remove('login-signup-container--active');
-  overlay.classList.remove('overlay--active');
-  document.body.classList.remove('stop-scrolling');
-});
+if (addFavBtn) {
+  addFavBtn.addEventListener('click', function () {
+    (0, _handleFavorites.handleFavorites)(document.body.dataset.id, 'add');
+  });
+  if (window.innerWidth <= 1024) {
+    favInvite.innerText = 'Add to favorites';
+  }
+  if (window.innerWidth <= 540) {
+    favInvite.innerText = '';
+  }
+}
+if (removeFavBtn) {
+  removeFavBtn.addEventListener('click', function () {
+    (0, _handleFavorites.handleFavorites)(document.body.dataset.id, 'remove');
+  });
+  if (window.innerWidth <= 1024) {
+    favInvite.innerText = 'Remove from favorites';
+  }
+  if (window.innerWidth <= 540) {
+    favInvite.innerText = '';
+  }
+}
 
 // Handle navbar
 var navbarUser = document.querySelector('.navbar--user');
@@ -5861,6 +5888,10 @@ if (pagination) {
     }
   });
 }
+
+// const filmList = document.querySelector('.film-list');
+// if (window.innerWidth < 1280)
+//   filmList.style.padding = `0 ${window.innerWidth / 98.4615}rem`;
 },{"./login.js":"login.js","./updateSettings.js":"updateSettings.js","./handleFavorites":"handleFavorites.js"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -5886,7 +5917,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62644" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57957" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

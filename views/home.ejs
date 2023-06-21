@@ -31,7 +31,7 @@
         </div>
         <% }); %>
       </div>
-      <% if (results > 30) { %>
+      <% if (results > 24) { %>
       <div class="pagination">
         <% if (+curPage > 1) {%>
         <div class="pagination__prev">
@@ -39,10 +39,10 @@
           PREV
         </div>
         <% } %>
-        <% for (i = 1; i <= Math.ceil(results / 30); i++) { %>
+        <% for (i = 1; i <= Math.ceil(results / 24); i++) { %>
         <div class="pagination__current <%= curPage == i ? 'pagination__item--active' : '' %>"><%= i %></div>
         <% } %>
-        <% if (+curPage < Math.ceil(results / 30)) {%>
+        <% if (+curPage < Math.ceil(results / 24)) {%>
         <div class="pagination__next">
           NEXT
           <i class="fa-regular fa-angle-right"></i>

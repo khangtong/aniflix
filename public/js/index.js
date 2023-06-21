@@ -2,28 +2,59 @@ import { login, logout, signup } from './login.js';
 import { updateSettings } from './updateSettings.js';
 import { handleFavorites } from './handleFavorites';
 
+// Handle overlay
+const overlay = document.querySelector('.overlay');
+
+if (overlay)
+  overlay.addEventListener('click', () => {
+    document
+      .querySelector('.login-container')
+      .classList.remove('login-signup-container--active');
+    document
+      .querySelector('.signup-container')
+      .classList.remove('login-signup-container--active');
+    overlay.classList.remove('overlay--active');
+    document.body.classList.remove('stop-scrolling');
+  });
+
 // Handle log in, sign up
 const loginForm = document.querySelector('.login-form');
 const signupForm = document.querySelector('.signup-form');
 const logoutBtn = document.querySelector('.logout');
+const closeFormBtn = document.querySelectorAll('.close-form-btn');
 
-if (loginForm)
-  loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = document.querySelector('#email--login').value;
-    const password = document.querySelector('#password--login').value;
-    login(email, password);
-  });
+if (closeFormBtn) {
+  if (loginForm)
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.querySelector('#email--login').value;
+      const password = document.querySelector('#password--login').value;
+      login(email, password);
+    });
 
-if (signupForm)
-  signupForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.querySelector('#name').value;
-    const email = document.querySelector('#email--signup').value;
-    const password = document.querySelector('#password--signup').value;
-    const passwordConfirm = document.querySelector('#passwordConfirm').value;
-    signup(name, email, password, passwordConfirm);
+  if (signupForm)
+    signupForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.querySelector('#name').value;
+      const email = document.querySelector('#email--signup').value;
+      const password = document.querySelector('#password--signup').value;
+      const passwordConfirm = document.querySelector('#passwordConfirm').value;
+      signup(name, email, password, passwordConfirm);
+    });
+
+  closeFormBtn.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      document
+        .querySelector('.login-container')
+        .classList.remove('login-signup-container--active');
+      document
+        .querySelector('.signup-container')
+        .classList.remove('login-signup-container--active');
+      overlay.classList.remove('overlay--active');
+      document.body.classList.remove('stop-scrolling');
+    });
   });
+}
 
 if (logoutBtn)
   logoutBtn.addEventListener('click', () => {
@@ -31,13 +62,13 @@ if (logoutBtn)
   });
 
 // Handle search
-const searchForm = document.querySelector('.nav__search');
-const searchInput = document.querySelector('.nav__search-input');
+const searchForm = document.querySelector('.search-group');
+const searchInput = document.querySelector('.search-input');
 
 if (searchForm)
-  searchForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    location.assign(`${location.origin}/search?s=${searchInput.value}`);
+  searchInput.addEventListener('keyup', (e) => {
+    if (e.keyCode === 13)
+      location.assign(`${location.origin}/search?s=${searchInput.value}`);
   });
 
 // Handle update user data
@@ -67,33 +98,37 @@ if (passwordForm)
   });
 
 // Handle add to favorites
+const favInvite = document.querySelector('.handle-favorites__invite');
 const addFavBtn = document.querySelector('.handle-favorites__btn--add');
 const removeFavBtn = document.querySelector('.handle-favorites__btn--remove');
 
-if (addFavBtn)
+if (addFavBtn) {
   addFavBtn.addEventListener('click', () => {
     handleFavorites(document.body.dataset.id, 'add');
   });
 
-if (removeFavBtn)
+  if (window.innerWidth <= 1024) {
+    favInvite.innerText = 'Add to favorites';
+  }
+
+  if (window.innerWidth <= 540) {
+    favInvite.innerText = '';
+  }
+}
+
+if (removeFavBtn) {
   removeFavBtn.addEventListener('click', () => {
     handleFavorites(document.body.dataset.id, 'remove');
   });
 
-// Handle overlay
-const overlay = document.querySelector('.overlay');
+  if (window.innerWidth <= 1024) {
+    favInvite.innerText = 'Remove from favorites';
+  }
 
-if (overlay)
-  overlay.addEventListener('click', () => {
-    document
-      .querySelector('.login-container')
-      .classList.remove('login-signup-container--active');
-    document
-      .querySelector('.signup-container')
-      .classList.remove('login-signup-container--active');
-    overlay.classList.remove('overlay--active');
-    document.body.classList.remove('stop-scrolling');
-  });
+  if (window.innerWidth <= 540) {
+    favInvite.innerText = '';
+  }
+}
 
 // Handle navbar
 const navbarUser = document.querySelector('.navbar--user');
@@ -259,3 +294,7 @@ if (pagination) {
     }
   });
 }
+
+// const filmList = document.querySelector('.film-list');
+// if (window.innerWidth < 1280)
+//   filmList.style.padding = `0 ${window.innerWidth / 98.4615}rem`;
