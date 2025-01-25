@@ -1,3 +1,3 @@
 # Aniflix
 
-An anime streaming application using expressjs, mongoose and more. 😉
+An anime streaming application using HTML, CSS, JavaScript, NodeJS, MongoDB and more. 😉
